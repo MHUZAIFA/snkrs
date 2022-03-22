@@ -2,7 +2,7 @@
   <ng-container *ngIf="!_authService.isLoggedIn; then NotLoggedInBlock; else LoggedInBlock"></ng-container>
   <ng-template #NotLoggedInBlock>
     <div class="w-100 d-flex justify-content-center align-items-center flex-column wishlist_no_items">
-      <img src="../../../assets/imgs/illustrations/auth.svg" alt="loading"
+      <img src="assets/imgs/illustrations/auth.svg" alt="loading"
         style="height: 40%; width: auto; max-width: 100%;">
 
       <p class="my-4">
@@ -14,7 +14,7 @@
     <ng-container *ngIf="wishlist.length === 0; then Empty; else Wishlist"></ng-container>
     <ng-template #Empty>
       <div class="w-100 d-flex justify-content-center align-items-center flex-column wishlist_no_items">
-        <img src="../../../assets/imgs/illustrations/empty_cart.svg" alt="loading"
+        <img src="assets/imgs/illustrations/empty_cart.svg" alt="loading"
           style="height: 40%; width: auto; max-width: 100%;">
 
         <p class="my-4">
