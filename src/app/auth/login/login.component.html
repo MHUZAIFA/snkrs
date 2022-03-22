@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm">
+<form [formGroup]="loginForm" (ngSubmit)="login()">
   <div>
     <br>
     <mat-form-field class="w-100" appearance="outline">
@@ -29,7 +29,7 @@
     </p>
 
     <br>
-    <button mat-raised-button (click)="login()"
+    <button type="submit" mat-raised-button
        color="primary" [disabled]="loginForm.invalid" style="height: 50px;">Login</button>
 
   </div>

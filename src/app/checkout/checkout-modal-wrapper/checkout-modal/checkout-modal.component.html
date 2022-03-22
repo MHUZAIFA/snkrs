@@ -1,5 +1,5 @@
 <ng-container *ngIf="!orderPlaced && !noCartItems">
-  <form [formGroup]="_formService.customerDetailsForm">
+  <form [formGroup]="_formService.customerDetailsForm" (ngSubmit)="placeOrder()">
     <div class="container-fluid">
       <h2 mat-dialog-title>Checkout
         <mat-icon style="float: right; cursor: pointer;" (click)="close()">close</mat-icon>
@@ -123,7 +123,7 @@
 
             <div class="row">
               <div class="col-12 my-4">
-                <button mat-raised-button color="primary" class="btn_place_order" (click)="placeOrder()"
+                <button mat-raised-button color="primary" class="btn_place_order" type="submit"
                   [disabled]="_formService.customerDetailsForm.invalid">
                   {{ submitButtonText }}
                 </button>
@@ -140,7 +140,7 @@
 </ng-container>
 <ng-container *ngIf="orderPlaced">
   <div class="d-flex justify-content-center align-items-center flex-column h-100 w-100">
-    <img src="../assets/imgs/illustrations/order_placed.svg" alt="order_placed"
+    <img src="assets/imgs/illustrations/order_placed.svg" alt="order_placed"
       style="width: 100%; height: auto; max-height: 50vh;">
     <p class="mt-4">
       Order placed successfully.
@@ -150,7 +150,7 @@
 </ng-container>
 <ng-container *ngIf="noCartItems">
   <div class="d-flex justify-content-center align-items-center flex-column h-100 w-100">
-    <img src="../assets/imgs/illustrations/empty_cart.svg" alt="add items to cart"
+    <img src="assets/imgs/illustrations/empty_cart.svg" alt="add items to cart"
       style="width: 100%; height: auto; max-height: 50vh;">
     <p class="mt-4">
       No items found in your cart

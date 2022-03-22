@@ -1,4 +1,4 @@
-<form [formGroup]="registrationForm">
+<form [formGroup]="registrationForm" (ngSubmit)="register()">
   <div>
     <br>
     <mat-form-field class="w-100 my-1" appearance="outline">
@@ -32,7 +32,7 @@
       </mat-error>
     </mat-form-field>
     <br>
-    <button mat-raised-button (click)="register()"
+    <button mat-raised-button type="submit"
        color="primary" [disabled]="registrationForm.invalid" style="height: 50px;">Register</button>
   </div>
 
