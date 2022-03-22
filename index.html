@@ -2,7 +2,29 @@
   <meta charset="utf-8">
   <title>Snkrs</title>
   <base href="https://huzaifafcrit.github.io/snkrs/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" id="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+  <script>
+    // Global boolean variable that holds the current orientation
+    var pageInPortraitMode;
+
+    // Listen for window resizes to detect orientation changes
+    window.addEventListener("resize", windowSizeChanged);
+
+    // Set the global orientation variable as soon as the page loads
+    addEventListener("load", function () {
+      pageInPortraitMode = window.innerHeight > window.innerWidth;
+      document.getElementById("viewport").setAttribute("content", "width=" + window.innerWidth + ", height=" + window.innerHeight + ", initial-scale=1.0, maximum-scale=1.0, user-scalable=0");
+    })
+
+    // Adjust viewport values only if orientation has changed (not on every window resize)
+    function windowSizeChanged() {
+      if (((pageInPortraitMode === true) && (window.innerHeight < window.innerWidth)) || ((pageInPortraitMode === false) && (window.innerHeight > window.innerWidth))) {
+        pageInPortraitMode = window.innerHeight > window.innerWidth;
+        document.getElementById("viewport").setAttribute("content", "width=" + window.innerWidth + ", height=" + window.innerHeight + ", initial-scale=1.0, maximum-scale=1.0, user-scalable=0");
+      }
+    }
+  </script>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#fff">
@@ -11,7 +33,7 @@
 <body class="mat-typography">
   <app-root></app-root>
   <noscript>Please enable JavaScript to continue using this application.</noscript>
-<script src="runtime.27342310a9fcae47.js" type="module"></script><script src="polyfills.8281ec5b1c34a132.js" type="module"></script><script src="scripts.120ba38e5fb761e4.js" defer></script><script src="main.4ab46166c91dba1b.js" type="module"></script>
+<script src="runtime.27342310a9fcae47.js" type="module"></script><script src="polyfills.8281ec5b1c34a132.js" type="module"></script><script src="scripts.120ba38e5fb761e4.js" defer></script><script src="main.6e4e78c36b7183f5.js" type="module"></script>
 
 
 </body></html>
