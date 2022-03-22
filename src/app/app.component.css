@@ -33,6 +33,7 @@
 
 .navigation, .login_btn_continer {
   display: unset;
+  margin-right: 0;
 }
 
 .ham {
