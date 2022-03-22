@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1647985368754,
+  "timestamp": 1647986078123,
   "index": "https://huzaifafcrit.github.io/snkrs/index.html",
   "assetGroups": [
     {
@@ -13,12 +13,12 @@
       "urls": [
         "https://huzaifafcrit.github.io/snkrs/favicon.ico",
         "https://huzaifafcrit.github.io/snkrs/index.html",
-        "https://huzaifafcrit.github.io/snkrs/main.155209c5c6ad64ae.js",
+        "https://huzaifafcrit.github.io/snkrs/main.4ab46166c91dba1b.js",
         "https://huzaifafcrit.github.io/snkrs/manifest.webmanifest",
         "https://huzaifafcrit.github.io/snkrs/polyfills.8281ec5b1c34a132.js",
         "https://huzaifafcrit.github.io/snkrs/runtime.27342310a9fcae47.js",
         "https://huzaifafcrit.github.io/snkrs/scripts.120ba38e5fb761e4.js",
-        "https://huzaifafcrit.github.io/snkrs/styles.ec184227581e264c.css"
+        "https://huzaifafcrit.github.io/snkrs/styles.0837fbb4e9d0b809.css"
       ],
       "patterns": []
     },
@@ -187,13 +187,13 @@
     "https://huzaifafcrit.github.io/snkrs/assets/imgs/products/Nike Mercurial Superfly 8 Elite/product/Nike Mercurial Superfly 8 Elite img3.webp": "8e0e85f2c09026e6ef634994c5ef1c7dfddd958b",
     "https://huzaifafcrit.github.io/snkrs/assets/imgs/products/Nike Mercurial Superfly 8 Elite/product/Nike Mercurial Superfly 8 Elite img4.webp": "11972e7df93475d09f8fbd08d8b579c3949e4579",
     "https://huzaifafcrit.github.io/snkrs/favicon.ico": "c8ad56c61a40a3e58406a63491fe1273945dd5fe",
-    "https://huzaifafcrit.github.io/snkrs/index.html": "0c0bff4982e17db3a6d562ec3ecadc0e62506040",
-    "https://huzaifafcrit.github.io/snkrs/main.155209c5c6ad64ae.js": "fa63f0cc52fa2513362690296db7a128aed510cc",
+    "https://huzaifafcrit.github.io/snkrs/index.html": "ed568c861476c77c85e2094fa718062c8c604e76",
+    "https://huzaifafcrit.github.io/snkrs/main.4ab46166c91dba1b.js": "3c4f4a885dd181d43d2660ffeca7649e629724ad",
     "https://huzaifafcrit.github.io/snkrs/manifest.webmanifest": "7d3362070e5b07d99904053856d9237458c3d997",
     "https://huzaifafcrit.github.io/snkrs/polyfills.8281ec5b1c34a132.js": "0b51029a90c9d4ddc0934c104f8ee26e5569aef9",
     "https://huzaifafcrit.github.io/snkrs/runtime.27342310a9fcae47.js": "aa5ce77e46a7f3c2d874e78b072b722a78f121f9",
     "https://huzaifafcrit.github.io/snkrs/scripts.120ba38e5fb761e4.js": "322e3577a482bee211521d4351097998f896446f",
-    "https://huzaifafcrit.github.io/snkrs/styles.ec184227581e264c.css": "b9abf8f7dddbb5fb281ca2eb220b50b7d2fc07e0"
+    "https://huzaifafcrit.github.io/snkrs/styles.0837fbb4e9d0b809.css": "d3341c3695bb1399c917d6efc69f477e44eb3039"
   },
   "navigationUrls": [
     {
