@@ -20,9 +20,9 @@
             No Shoes Found
           </ng-template>
           <ng-template #ResultBlock>
-            <!-- <span *ngIf="_productService.filter.minPrice === 0 || _productService.filter.maxPrice === 25000">
+            <span *ngIf="_productService.filter.minPrice === 0 || _productService.filter.maxPrice === 25000">
                 All
-              </span> -->
+              </span>
             <span *ngFor="let gender of _productService.filter.categories; let index= index;">
               <ng-container
                 *ngIf="_productService.filter.categories.length === index + 1; then AndBlock; else CommaBlock">
@@ -49,7 +49,7 @@
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>Search</mat-label>
         <input matInput placeholder="Ex. Air force 1" [(ngModel)]="_productService.searchTerm" [disabled]="!!(_productService.loading$ | async)">
-        <a matSuffix mat-icon-button aria-label="tune" [routerLink]="['./', {outlets: { bottomsheet: 'filter' } }]">
+        <a matSuffix style="z-index: 10;" (click)="$event.stopPropagation()" mat-icon-button aria-label="tune" [routerLink]="['./', {outlets: { bottomsheet: 'filter' } }]">
           <mat-icon>tune</mat-icon>
         </a>
       </mat-form-field>

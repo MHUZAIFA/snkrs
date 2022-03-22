@@ -7,23 +7,24 @@ import { CheckoutModalComponent } from './checkout-modal/checkout-modal.componen
 @Component({
   selector: 'app-checkout-modal-wrapper',
   template: ``,
-  styles: [
-  ]
+  styles: [],
 })
 export class CheckoutModalWrapperComponent implements OnInit {
-
   subscription?: Subscription;
 
   constructor(public dialog: MatDialog, private _router: Router) {}
 
   ngOnInit(): void {
-      this.openDialog();
+    this.openDialog();
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(CheckoutModalComponent, { disableClose: true });
+    const dialogRef = this.dialog.open(CheckoutModalComponent, {
+      disableClose: true,
+      panelClass: 'custom_modal',
+    });
 
-    this.subscription = dialogRef.afterClosed().subscribe(_ => {
+    this.subscription = dialogRef.afterClosed().subscribe((_) => {
       const redirectUri = this._router.url.replace('/(modal:checkout)', '');
       this._router.navigateByUrl(redirectUri);
     });
@@ -32,5 +33,4 @@ export class CheckoutModalWrapperComponent implements OnInit {
   ngOnDestroy(): void {
     this.subscription?.unsubscribe();
   }
-
 }

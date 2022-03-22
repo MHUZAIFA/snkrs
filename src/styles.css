@@ -72,11 +72,11 @@ body {
 
 /* checkout modal */
 
-.mat-dialog-container .mat-dialog-content {
+.custom_modal .mat-dialog-container .mat-dialog-content {
   max-height: 75vh;
 }
 
-.cdk-overlay-pane {
+.custom_modal.cdk-overlay-pane {
   max-width: 90vw !important;
 }
 
