@@ -1,0 +1,16 @@
+<div style="cursor: pointer;" *ngIf="product" [routerLink]="product.id">
+  <img [src]="product.coverImage" [alt]="product.name" class="cover_image">
+  <small class="mb-1 mt-3" style="display: block; font-size: small; color: goldenrod;">
+    <span *ngIf="product.newest">(New Arrival)</span>
+    <span *ngIf="!product.newest"> &nbsp; </span>
+  </small>
+  <h2 class="mb-1 product_title">
+    {{ product.name }}
+  </h2>
+  <p class="mb-1">
+    {{ product.category }}
+  </p>
+  <h3>
+    &#8377; {{ product.displayPrice }}
+  </h3>
+</div>

@@ -1,0 +1,80 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8">
+      <mat-form-field appearance="outline">
+        <mat-label>Search</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. TID00000" #input>
+      </mat-form-field>
+
+      <div class="mat-elevation-z3">
+        <table mat-table [dataSource]="dataSource" matSort>
+
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Tracking# </th>
+            <td mat-cell *matCellDef="let row">
+              <a [routerLink]="['./', {outlets: { section: row.id } }]" routerLinkActive="router-link-active"
+                style="font-weight: 500; color: darkblue; text-decoration: none;"> {{row.trackingId}} </a>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Progress </th>
+            <td mat-cell *matCellDef="let row">
+              <span [class]="'badge ' + row.status">
+                {{row.status | titlecase }}
+              </span>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="items">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Items </th>
+            <td mat-cell *matCellDef="let row">
+              <span class="item_count">{{row.cartItems.length}}</span>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="netTotal">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Net Total </th>
+            <td mat-cell *matCellDef="let row"> &#8377; {{row.netTotal}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="orderDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Create Date </th>
+            <td mat-cell *matCellDef="let row"> {{row.orderedDate | date: 'mediumDate'}} </td>
+          </ng-container>
+
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="5">
+              <span *ngIf="input.value.length > 0 && _orderService.orders.length !== 0">
+                No order matching the search term : <b>"{{input.value}}"</b> found.
+              </span>
+              <span *ngIf="_orderService.orders.length === 0">
+                No orders found
+              </span>
+            </td>
+          </tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[10]" aria-label="Select page of users"></mat-paginator>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="d-flex justify-content-center align-items-center flex-column h-100 py-5" *ngIf="!outletActivated">
+        <img src="../../../assets/imgs/illustrations/select.svg" alt="select an order"
+          style="width: 100%; height: auto;">
+        <p class="mt-5" style="font-weight: 500; letter-spacing: 0.03rem;">
+          Select an order to view its details
+        </p>
+      </div>
+      <router-outlet name="section" (activate)="outletActivated = true" (deactivate)="outletActivated = false">
+      </router-outlet>
+    </div>
+  </div>
+
+</div>

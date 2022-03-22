@@ -1,0 +1,29 @@
+<ng-container *ngIf="product">
+  <div class="latest-card-container">
+    <img [src]="product.coverImage" [alt]="product.name" class="cover_image">
+    <div class="overlay">
+      <div class="d-flex justify-content-center">
+        <div class="custom_icon_btn" [routerLink]="['../sneakers', product.id]" matTooltip="View product" matTooltipPosition="above">
+          <mat-icon>visibility</mat-icon>
+        </div>
+        <div class="custom_icon_btn" (click)="_customerService.wishlistToggle(product.id)" [matTooltip]=" !isWishlisted ? 'Add to wishlist' : 'Remove from wishlist'" matTooltipPosition="above">
+          <mat-icon *ngIf="!isWishlisted">favorite_border</mat-icon>
+          <mat-icon *ngIf="isWishlisted">favorite</mat-icon>
+        </div>
+        <div class="custom_icon_btn" [routerLink]="['../sneakers', product.id]" matTooltip="Add to cart?" matTooltipPosition="above">
+          <mat-icon>shopping_cart</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h2 class="mb-1 mt-3 product_title">
+    {{ product.name }}
+  </h2>
+  <p class="mb-1">
+    {{ product.category }}
+  </p>
+  <h3>
+    &#8377; {{ product.displayPrice }}
+  </h3>
+</ng-container>
+

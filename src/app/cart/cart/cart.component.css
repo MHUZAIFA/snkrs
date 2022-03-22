@@ -1,0 +1,17 @@
+.cart_no_items {
+  height: calc(100vh - 4.5rem); padding: 20px;
+}
+
+.custom_padding {
+  padding: 0 1rem;
+}
+
+@media (max-width: 500px) {
+  .cart_no_items {
+    height: 53vh;
+  }
+
+  .custom_padding {
+    padding: 0.2rem;
+  }
+}

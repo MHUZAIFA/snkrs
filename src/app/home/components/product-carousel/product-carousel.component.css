@@ -1,0 +1,9 @@
+img {
+  filter: brightness(50%);
+  border-radius: 5px;
+}
+
+.carousel {
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.9);
+  border-radius: 5px;
+}

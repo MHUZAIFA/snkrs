@@ -1,0 +1,45 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+/* table styling */
+.mat-cell {
+  font-size: 12px;
+}
+
+tr.mat-header-row,
+.mat-paginator ::ng-deep.mat-paginator-container {
+  height: 50px;
+}
+
+tr.mat-row {
+  height: 44px;
+}
+
+@media (max-width: 500px) {
+
+  td,
+  th,
+  .mat-cell {
+    font-size: x-small;
+  }
+
+  th.mat-header-cell:first-of-type,
+  td.mat-cell:first-of-type {
+    padding-left: 10px;
+  }
+
+  th.mat-header-cell:last-of-type,
+  td.mat-cell:last-of-type {
+    padding-right: 5px;
+  }
+
+  .item_count {
+    padding: 0 13px;
+  }
+}

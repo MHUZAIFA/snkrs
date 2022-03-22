@@ -1,0 +1,160 @@
+<ng-container *ngIf="!orderPlaced && !noCartItems">
+  <form [formGroup]="_formService.customerDetailsForm">
+    <div class="container-fluid">
+      <h2 mat-dialog-title>Checkout
+        <mat-icon style="float: right; cursor: pointer;" (click)="close()">close</mat-icon>
+      </h2>
+      <mat-dialog-content class="mat-typography">
+        <div class="row">
+          <div class="col-md-7">
+            <p>
+              Shipping Method
+            </p>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="d-flex flex-row w-100">
+                  <div class="w-50 d-flex justify-content-between align-items-center custom_radio"
+                    [ngClass]="{'active': isStandardShipping}" (click)="updateShippingMethod('standard')">
+                    <div>
+                      <span class="shipping_header">
+                        Standard
+                      </span>
+                      <span class="shipping_description">
+                        5-7 Days delivery
+                      </span>
+                    </div>
+                    <div class="shipping_amount">
+                      Free
+                    </div>
+                  </div>
+                  <div class="w-50 d-flex justify-content-between align-items-center custom_radio"
+                    [ngClass]="{'active': !isStandardShipping}" (click)="updateShippingMethod('express')">
+                    <div>
+                      <span class="shipping_header">
+                        Express
+                      </span>
+                      <span class="shipping_description">
+                        2-3 Days delivery
+                      </span>
+                    </div>
+                    <div class="shipping_amount">
+                      &#8377; 250
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p class="mt-3">
+              Customer Details
+            </p>
+            <app-customer-info-form></app-customer-info-form>
+          </div>
+
+          <div class="col-md-5">
+
+            <p class="">
+              Payment Mode
+            </p>
+
+            <mat-radio-group aria-label="Select an option" formControlName="paymentMode">
+              <div class="row">
+                <div class="col-6">
+                  <mat-radio-button color="primary" value="COD">Cash On Delivery</mat-radio-button>
+                </div>
+                <div class="col-6">
+                  <mat-radio-button color="primary" value="GPAY">Gpay</mat-radio-button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <mat-radio-button color="primary" value="PAYTM">Paytm</mat-radio-button>
+                </div>
+                <div class="col-6">
+                  <mat-radio-button color="primary" value="CARD">Credit/Debit card</mat-radio-button>
+                </div>
+              </div>
+            </mat-radio-group>
+            <br>
+            <h2>
+              Summary
+            </h2>
+
+            <div class="d-flex justify-content-between w-100">
+              <h4>
+                Subtotal
+              </h4>
+
+              <h4>
+                &#8377; {{ _cartService.subTotal }}
+              </h4>
+            </div>
+
+            <div class="d-flex justify-content-between w-100 my-1">
+              <h4>
+                Delivery charges
+              </h4>
+
+              <h4>
+                &#8377; {{ _cartService.deliveryCharges }}.00
+              </h4>
+            </div>
+
+            <div class="d-flex justify-content-between w-100 my-1">
+              <h4>
+                Shipping charges
+              </h4>
+
+              <h4>
+                &#8377; {{ _cartService.shippingCharges }}.00
+              </h4>
+            </div>
+
+            <div class="d-flex justify-content-between w-100 border-top border-bottom py-3">
+              <h4 class="mb-0">
+                Total
+              </h4>
+
+              <h4 class="mb-0">
+                &#8377; {{ _cartService.total }}
+              </h4>
+            </div>
+
+
+            <div class="row">
+              <div class="col-12 my-4">
+                <button mat-raised-button color="primary" class="btn_place_order" (click)="placeOrder()"
+                  [disabled]="_formService.customerDetailsForm.invalid">
+                  {{ submitButtonText }}
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </mat-dialog-content>
+    </div>
+
+  </form>
+
+</ng-container>
+<ng-container *ngIf="orderPlaced">
+  <div class="d-flex justify-content-center align-items-center flex-column h-100 w-100">
+    <img src="../../../../assets/imgs/illustrations/order_placed.svg" alt="order_placed"
+      style="width: 100%; height: auto; max-height: 50vh;">
+    <p class="mt-4">
+      Order placed successfully.
+    </p>
+    <a routerLink="../orders" style="color: darkblue; cursor: pointer;" (click)="close()"> View your Orders </a>
+  </div>
+</ng-container>
+<ng-container *ngIf="noCartItems">
+  <div class="d-flex justify-content-center align-items-center flex-column h-100 w-100">
+    <img src="../../../../assets/imgs/illustrations/empty_cart.svg" alt="add items to cart"
+      style="width: 100%; height: auto; max-height: 50vh;">
+    <p class="mt-4">
+      No items found in your cart
+    </p>
+    <a routerLink="../sneakers" style="color: darkblue; cursor: pointer;" (click)="close()"> Go to shop </a>
+  </div>
+</ng-container>

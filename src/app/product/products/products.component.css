@@ -1,0 +1,33 @@
+.product_container {
+  height: calc(100vh - 142px);
+  padding: 0 20px;
+  margin-left: -15px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.input_sort_by {
+  width: auto;
+}
+
+.txt_filter {
+  margin-bottom: 0;
+}
+
+@media (max-width: 500px)  {
+ .product_container {
+  height: calc(100vh - 225px);
+  margin-left: 0;
+  padding: 0;
+ }
+
+ .input_sort_by {
+   width: 100%;
+ }
+
+ .txt_filter {
+   margin-bottom: 10px;
+   height: 40px;
+ }
+
+}

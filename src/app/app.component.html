@@ -1,0 +1,103 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="over" position="end" [(opened)]="opened" (opened)="events.push('open!')"
+    (closed)="events.push('close!')">
+    <div class="sidebar">
+      <div class="sidebar_header">
+        <h1 style="font-weight: 500; font-size: 50px; letter-spacing: 0.05rem;">
+          SNKRS
+        </h1>
+      </div>
+
+      <div class="sidebar_body">
+        <div class="sidebar_links">
+          <mat-icon>travel_explore</mat-icon>
+          <a routerLink="/explore" routerLinkActive="active">Explore</a>
+        </div>
+        <div class="sidebar_links">
+          <mat-icon>directions_run</mat-icon>
+          <a routerLink="/sneakers" routerLinkActive="active">Sneakers</a>
+        </div>
+        <div class="sidebar_links">
+          <mat-icon>diamond</mat-icon>
+          <a routerLink="/accessories" routerLinkActive="active">Accessories</a>
+        </div>
+        <div class="sidebar_links" *ngIf="_authService.isLoggedIn">
+          <mat-icon>sell</mat-icon>
+          <a routerLink="/orders" routerLinkActive="active">Orders</a>
+        </div>
+        <div class="sidebar_links" *ngIf="!_authService.isLoggedIn">
+          <mat-icon>login</mat-icon>
+          <a [routerLink]="['../', {outlets: { modal: 'authenticate' } }]" routerLinkActive="active">Login</a>
+        </div>
+        <div class="sidebar_links" *ngIf="_authService.isLoggedIn">
+          <mat-icon>logout</mat-icon>
+          <a (click)="_authService.logout()">Logout</a>
+        </div>
+      </div>
+
+      <div class="sidebar_footer">
+        &#169; SNKRS.IN 2022
+      </div>
+
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <nav class="navbar fixed-top navbar-light bg-light" style="background-color: #fff !important;">
+      <div class="container">
+        <a class="navbar-brand" routerLink="/explore">SNKRS</a>
+        <div class="navigation">
+          <ul class="navbar-nav flex-row">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/explore" routerLinkActive="active">Explore</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/sneakers" routerLinkActive="active">Sneakers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/accessories" routerLinkActive="active">Accessories</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <ul class="navbar-nav flex-row">
+            <li class="nav-item" *ngIf="_authService.isLoggedIn">
+              <a class="nav-link" routerLink="/orders">
+                <mat-icon>inventory_2</mat-icon>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/wishlist">
+                <mat-icon>favorite_border</mat-icon>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/cart">
+                <mat-icon [matBadge]="_customerService.customer.cartItems.length" matBadgeColor="warn"
+                  [matBadgeHidden]="isBadgeHidden"
+                  matBadgeSize="small">shopping_cart</mat-icon>
+              </a>
+            </li>
+            <li class="nav-item login_btn_continer" *ngIf="!_authService.isLoggedIn">
+              <button mat-button class="login_btn" id="login-btn"
+                [routerLink]="['../', {outlets: { modal: 'authenticate' } }]">Login</button>
+            </li>
+            <li class="nav-item login_btn_continer" *ngIf="_authService.isLoggedIn">
+              <button mat-button class="login_btn" (click)="_authService.logout()">Logout</button>
+            </li>
+            <li class="nav-item ham">
+              <a class="nav-link" (click)="sidenav.toggle()">
+                <mat-icon style="height: 20px; width: 20px; vertical-align: sub;">menu</mat-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="mt-5" style="height: calc(100vh - 3rem); overflow-y: auto; background-color: #fff;">
+      <router-outlet name="modal"></router-outlet>
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

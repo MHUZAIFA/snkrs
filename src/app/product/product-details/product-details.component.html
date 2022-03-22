@@ -1,0 +1,114 @@
+<div class="container mt-4">
+  <ng-container *ngIf="loading; then LoadingBlock; else ProductDetailsBlock;"></ng-container>
+  <ng-template #LoadingBlock>
+    <div class="w-100 d-flex justify-content-center align-items-center flex-column"
+      style="height: calc(100vh - 4.5rem); padding: 20px;">
+      <img src="../../../assets/imgs/illustrations/product_details.svg" alt="loading"
+        style="height: 50%; width: auto; max-width: 100%;">
+      <div class="loadersmall my-4"></div>
+      fetching product details
+    </div>
+  </ng-template>
+  <ng-template #ProductDetailsBlock>
+    <div class="row">
+      <div class="col-md-12" *ngIf="product">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="row images_container">
+              <div class="col-md-6 mb-3" *ngFor="let image of product.images">
+                <img [src]="image" alt="product_image" style="width: 100%; height: 100%; border-radius: 2px;">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 details_container">
+            <h1 style="font-size: xx-large; letter-spacing: 0.03rem; margin-bottom: 10px;">
+              {{ product.name }}
+            </h1>
+            <p style="font-size: large;">
+              {{ product.category }}
+            </p>
+            <h2 style="font-size: x-large; font-weight: 500; letter-spacing: 0.03rem; margin-bottom: 5px;">
+              &#8377;{{ product.displayPrice }}
+            </h2>
+            <p class="text-muted mb-3">incl. of taxes and duties</p>
+
+            <div class="row">
+              <div class="col-5">
+                <mat-form-field class="w-100 mt-1" appearance="outline">
+                  <mat-label>Size</mat-label>
+                  <mat-select [(ngModel)]="selectedSize">
+                    <mat-option value="none">Select size</mat-option>
+                    <mat-option *ngFor="let size of sizes" [value]="size.value" [disabled]="!size.available">{{
+                      size.value }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-7">
+                <div class="d-flex justify-content-between">
+                  <button mat-button class="btn_qty" (click)="quantity = (quantity > 1 ? quantity - 1 : 1)">
+                    <mat-icon>remove</mat-icon>
+                  </button>
+                  <input class="form-control input_qty" type="text" [(ngModel)]="quantity" (blur)="validateInput()">
+                  <button mat-button class="btn_qty" (click)="quantity = (quantity < 5 ? quantity + 1 : 5)">
+                    <mat-icon>add</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <button mat-raised-button style="background-color: #000; width: 100%; margin: 20px 0; height: 50px;"
+                  color="primary" (click)="addToCart(product.id)">Add to cart</button>
+                <button mat-button style="border: 1px solid #000; width: 100%; height: 50px;"
+                  (click)="_customerService.wishlistToggle(product.id)">
+                  Wishlist
+                  <mat-icon *ngIf="!isWishlisted" style="font-size: large; vertical-align: text-top;">favorite_border
+                  </mat-icon>
+                  <mat-icon *ngIf="isWishlisted" style="font-size: large; vertical-align: text-top;">favorite</mat-icon>
+                </button>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <p class="my-4"
+                  style="letter-spacing: 0.03rem; word-spacing: 0.05rem; text-align: justify; font-size: small;">
+                  {{ product.description }}
+                </p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="d-flex justify-content-between">
+                  <h2>
+                    Reviews (100)
+                  </h2>
+                  <div>
+                    <app-rating-stars [fullStars]="4" [halfStars]="1"></app-rating-stars>
+                  </div>
+                </div>
+
+                <app-rating-unit [label]="5" [percentage]="90" [reviewerCount]="50"></app-rating-unit>
+                <app-rating-unit [label]="4" [percentage]="70" [reviewerCount]="30"></app-rating-unit>
+                <app-rating-unit [label]="3" [percentage]="20" [reviewerCount]="13"></app-rating-unit>
+                <app-rating-unit [label]="2" [percentage]="10" [reviewerCount]="5"></app-rating-unit>
+                <app-rating-unit [label]="1" [percentage]="5" [reviewerCount]="2"></app-rating-unit>
+
+                <h3 class="border-bottom mt-5 pb-3">
+                  Top Comments
+                </h3>
+
+                <ng-container *ngFor="let _ of [].constructor(3); last as last;">
+                  <app-review [isLast]="last"></app-review>
+                </ng-container>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

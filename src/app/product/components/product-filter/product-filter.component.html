@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-md-12">
+    <h3 class="my-2">Filter</h3>
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <section class="example-section" [formGroup]="gender">
+      <h3>Gender</h3>
+      <mat-checkbox formControlName="men">Men</mat-checkbox>
+      <mat-checkbox formControlName="women">Women</mat-checkbox>
+      <mat-checkbox formControlName="unisex">Unisex</mat-checkbox>
+    </section>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-12">
+    <section class="example-section" [formGroup]="kids">
+      <h3>Kids</h3>
+      <mat-checkbox formControlName="boys">Boys</mat-checkbox>
+      <mat-checkbox formControlName="girls">Girls</mat-checkbox>
+    </section>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-12 example-section">
+    <h3>Price Range</h3>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>Min</mat-label>
+          <input matInput placeholder="Ex.1000" [(ngModel)]="minValue" type="number">
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>Max</mat-label>
+          <input matInput placeholder="Ex.1000" [(ngModel)]="maxValue" type="number">
+        </mat-form-field>
+      </div>
+    </div>
+    <br>
+    <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-12">
+    <div class="d-flex justify-content-end w-100 mb-3">
+      <button mat-button (click)="cancel()">Cancel</button>
+      <button mat-button class="btn_reset" (click)="reset()">Reset</button>
+      <button mat-raised-button class="btn_apply" (click)="applyFilter()">Apply</button>
+    </div>
+  </div>
+</div>

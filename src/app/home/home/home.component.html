@@ -1,0 +1,117 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="intro_container">
+        <div class="details_container">
+          <div class="custom_padding">
+            <h2 class="mb-2" style="font-weight: 400;">
+              Welcome to SNKRS,
+            </h2>
+            <h1 style="font-size: xx-large; letter-spacing: 0.03rem; line-height: 45px;" class="mb-2">
+              Your one place stop, for all the sneakers that you'll ever need.
+            </h1>
+          </div>
+
+          <div class="my-4 custom_padding d-block">
+            <q style="font-size: medium; letter-spacing: 0.03rem; line-height: 25px; text-align: justify;">Sneakers are a new era. Anyone can feel new with a new pair of shoes. They make you feel contemporary. It's fun because I'm not a young designer, and it opens my brain. Hip-hop isn't just for the U.S. Everyone loves it.</q>
+            <p class="mt-2" style="font-weight: 400;">
+              - Giuseppe Zanotti
+            </p>
+          </div>
+
+          <div class="custom_padding">
+            <button mat-raised-button color="primary" class="btn_explore_pdt" routerLink="/sneakers">
+              Explore Our Products
+              <mat-icon>trending_flat</mat-icon>
+            </button>
+            <br><br>
+            <span class="text_scroll_down">
+            Scroll down
+            <mat-icon style="width: 45px; font-size: 35px; height: inherit;">trending_flat</mat-icon>
+            </span>
+          </div>
+
+        </div>
+        <div class="carousel_container">
+          <app-product-carousel></app-product-carousel>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row my-5 custom_padding">
+    <div class="col-md-12">
+      <h2>
+        Our Trending Sneakers
+      </h2>
+      <div class="row">
+        <ng-container *ngFor="let product of trendingProducts">
+          <div class="col-md-4">
+            <app-latest-card [product]="product"></app-latest-card>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid" style="background-color: #000; color: #fff;">
+  <div class="container pt-5 pb-3">
+    <div class="row">
+      <div class="col-md-7">
+        <h1>
+          By Subscribing To Our Newsletter You Can Get 30% Off
+        </h1>
+
+        <p class="text-muted mb-5">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam pariatur sapiente eligendi quae sit aut id quibusdam ad, eius ex vero, magnam ut ullam corrupti. Doloribus, porro impedit? Tenetur, voluptate!
+        </p>
+
+        <form>
+          <div class="row pt-4">
+            <div class="col-md-5">
+              <input type="text" name="name" id="name" class="form-control" placeholder="Enter your name">
+            </div>
+            <div class="col-md-5">
+              <input type="text" name="name" id="name" class="form-control" placeholder="Enter your email address">
+            </div>
+            <div class="col-md-2">
+              <button mat-raised-button class="btn_subscribe"> Subscribe! </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-5">
+        <div class="row details">
+          <div class="col-md-6">
+            <h4>Store Location</h4>
+            <p>Mumbai, India</p>
+          </div>
+          <div class="col-md-6">
+            <h4>Work Hours</h4>
+            <p>07Am - 09PM Daily</p>
+          </div>
+          <div class="col-md-6">
+            <h4>Phone</h4>
+            <p>+91 8866775544</p>
+          </div>
+          <div class="col-md-6">
+            <h4>Email</h4>
+            <p>support@snkrs.com</p>
+          </div>
+          <div class="col-md-6">
+            <h4>Office Location</h4>
+            <p>Pune, India</p>
+          </div>
+          <div class="col-md-6">
+            <h4>Social Media</h4>
+            <p>Facebook, Instagram, Twitter, LinkedIn </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

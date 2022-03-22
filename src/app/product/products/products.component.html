@@ -1,0 +1,103 @@
+<router-outlet name="bottomsheet"></router-outlet>
+<div class="container mt-3">
+
+  <div class="row">
+    <div class="col-12 col-md-3">
+      <h2 class="my-0">
+        Sneakers ({{ (_productService.products$ | async)?.length }})
+      </h2>
+      <p class="txt_filter">
+        <ng-container *ngIf="filterApplied; then FilterTextBlock; else AllShoesBlock"></ng-container>
+        <ng-template #AllShoesBlock>
+          All Shoes
+        </ng-template>
+
+        <ng-template #FilterTextBlock>
+          <ng-container
+            *ngIf="_productService.filter.categories.length > 0 && _productService.filter.subCategories.length > 0; then NoResultBlock; else ResultBlock">
+          </ng-container>
+          <ng-template #NoResultBlock>
+            No Shoes Found
+          </ng-template>
+          <ng-template #ResultBlock>
+            <!-- <span *ngIf="_productService.filter.minPrice === 0 || _productService.filter.maxPrice === 25000">
+                All
+              </span> -->
+            <span *ngFor="let gender of _productService.filter.categories; let index= index;">
+              <ng-container
+                *ngIf="_productService.filter.categories.length === index + 1; then AndBlock; else CommaBlock">
+              </ng-container>
+              <ng-template #CommaBlock><span *ngIf="index !== 0">, </span></ng-template>
+              <ng-template #AndBlock> <span *ngIf="index !== 0"> and </span></ng-template>{{ gender }}
+            </span>
+            <span *ngFor="let kid of _productService.filter.subCategories; let index= index;">
+              <span *ngIf="index !== 0"> and </span>{{ kid }}
+            </span>
+            <span *ngIf="_productService.filter.minPrice > 0 || _productService.filter.maxPrice < 25000">
+              <span
+                *ngIf="_productService.filter.categories.length === 0 && _productService.filter.subCategories.length === 0">All
+                Shoes</span>
+              between &#8377;{{ _productService.filter.minPrice }} - &#8377;{{ _productService.filter.maxPrice }}
+            </span>
+          </ng-template>
+        </ng-template>
+
+        <!-- Men's Shoes between 5,000 - 10,000 -->
+      </p>
+    </div>
+    <div class="col-6 col-md-6" style="text-align: end;">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Search</mat-label>
+        <input matInput placeholder="Ex. Air force 1" [(ngModel)]="_productService.searchTerm" [disabled]="!!(_productService.loading$ | async)">
+        <a matSuffix mat-icon-button aria-label="tune" [routerLink]="['./', {outlets: { bottomsheet: 'filter' } }]">
+          <mat-icon>tune</mat-icon>
+        </a>
+      </mat-form-field>
+    </div>
+    <div class="col-6 col-md-3" style="text-align: end;">
+      <mat-form-field appearance="outline" class="input_sort_by">
+        <mat-label>Sort By</mat-label>
+        <mat-select [(ngModel)]="_productService.sortBy" name="sortBy" placeholder="Ex. Newest">
+          <mat-option *ngFor="let by of sortBy" [value]="by">
+            {{by}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <ng-container *ngIf="(_productService.loading$ | async); then LoadingBlock; else ProductBlock"></ng-container>
+  <ng-template #LoadingBlock>
+    <div class="w-100 d-flex justify-content-center align-items-center flex-column"
+      style="height: calc(100vh - 14rem); padding: 20px;">
+      <img src="../../../assets/imgs/illustrations/product_loading.svg" alt="loading"
+        style="height: 50%; width: auto; max-width: 100%;">
+
+      <div class="loadersmall mt-4 mb-3"></div>
+
+      fetching products
+    </div>
+  </ng-template>
+  <ng-template #ProductBlock>
+    <ng-container *ngIf="(_productService.noProductsFound$ | async); then NoResultBlock; else ResultBlock;">
+    </ng-container>
+    <ng-template #NoResultBlock>
+      <div class="w-100 d-flex justify-content-center align-items-center flex-column"
+        style="height: calc(100vh - 14rem); padding: 20px;">
+        <img src="../../../assets/imgs/illustrations/no_search_result.svg" alt="noProductFound"
+          style="height: 50%; width: auto; max-width: 100%; margin-bottom: 30px;">
+        No products found for your search and filter criteria
+      </div>
+    </ng-template>
+    <ng-template #ResultBlock>
+      <div class="product_container">
+        <div class="row mt-3">
+          <div class="col-6 col-md-4 mb-4" *ngFor="let product of (_productService.products$ | async)">
+            <app-product-card [product]="product"></app-product-card>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ng-template>
+
+</div>

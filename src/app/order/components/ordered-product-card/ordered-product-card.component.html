@@ -1,0 +1,54 @@
+<ng-container *ngIf="product">
+  <div class="row mb-4">
+    <div class="col-4">
+      <div class="d-flex align-items-center w-100 h-100">
+        <img [src]="product.coverImage" [alt]="product.name" style="width: 100%; height: auto;">
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="d-flex flex-column justify-content-between h-100 w-100">
+        <div class="row">
+          <div class="col-12">
+            <h3 class="mb-0 cart_item_title">
+              {{ product.name }}
+            </h3>
+            <h4 class="text-muted mb-0" style="font-size: smaller;">
+              {{ product.category }}
+            </h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+
+            <h3 class="mb-0">
+              <span class="text-muted">
+                Size:
+              </span>
+              <span style="font-size: x-small;">{{ selectedSize }}</span>
+            </h3>
+          </div>
+          <div class="col-6">
+            <h3 class="mb-0">
+              <span class="text-muted">
+                Quantity:
+              </span>
+              <span style="font-size: x-small;">{{ selectedQuantity }}</span>
+            </h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <h3 class="mb-0">
+              &#8377; {{ price }}
+            </h3>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</ng-container>
+<hr *ngIf="!isLast" style="color: lightgray;">

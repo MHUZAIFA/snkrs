@@ -1,0 +1,9 @@
+.wishlist_no_items {
+  height: calc(100vh - 4.5rem); padding: 20px;
+}
+
+@media (max-width: 500px) {
+  .wishlist_no_items {
+    height: 90vh;
+  }
+}

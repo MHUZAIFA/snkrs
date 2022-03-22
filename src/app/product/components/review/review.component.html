@@ -1,0 +1,17 @@
+<div class="d-flex flex-column w-100 pb-3 mb-4" [ngClass]="{'border-bottom': !isLast}">
+  <div class="d-flex flex-row justify-content-between align-items-center">
+    <h3 class="mb-0">
+      {{ reviewer }}
+    </h3>
+
+    <h5 class="mb-0 text-muted">
+      {{ reviewDate }}
+    </h5>
+  </div>
+  <div class="mt-2">
+    <app-rating-stars [fullStars]="fullStars" [halfStars]="halfStars"></app-rating-stars>
+    <p style="letter-spacing: 0.03rem; margin-top: 10px;">
+      {{ comment }}
+    </p>
+  </div>
+</div>

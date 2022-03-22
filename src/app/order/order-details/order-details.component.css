@@ -1,0 +1,36 @@
+.order_container {
+  height: calc(100vh - 7.5rem - 5px);
+  margin-right: -23px;
+  padding-top: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.details_header {
+  font-size: x-small;
+  color: #676767;
+  letter-spacing: 0.03rem;
+  text-transform: uppercase;
+  display: block;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.mat-tab-group.mat-primary ::ng-deep.mat-ink-bar {
+  width: 50% !important;
+}
+
+.mat-tab-group.mat-primary ::ng-deep.mat-tab-label {
+  width: 100%;
+}
+
+@media (max-width: 500px) {
+  .order_container {
+    height: unset;
+  }
+
+  .order_details_summary {
+    margin-top: 30px;
+  }
+}

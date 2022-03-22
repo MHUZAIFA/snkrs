@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h2 mat-dialog-title class="m-0">SNKRS</h2>
+  <mat-icon style="cursor: pointer;" (click)="close()">close</mat-icon>
+</div>
+<mat-dialog-content class="mat-typography mt-3">
+  <mat-tab-group animationDuration="0" >
+    <mat-tab label="Login">
+      <app-login></app-login>
+    </mat-tab>
+    <mat-tab label="Register">
+      <app-register></app-register>
+    </mat-tab>
+  </mat-tab-group>
+</mat-dialog-content>

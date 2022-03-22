@@ -1,0 +1,35 @@
+<div class="container mt-4" style="height: calc(100vh - 4.5rem); overflow-y: auto;">
+  <ng-container *ngIf="!_authService.isLoggedIn; then NotLoggedInBlock; else LoggedInBlock"></ng-container>
+  <ng-template #NotLoggedInBlock>
+    <div class="w-100 d-flex justify-content-center align-items-center flex-column wishlist_no_items">
+      <img src="../../../assets/imgs/illustrations/auth.svg" alt="loading"
+        style="height: 40%; width: auto; max-width: 100%;">
+
+      <p class="my-4">
+        Login to view products added by you to your wishlist.
+      </p>
+    </div>
+  </ng-template>
+  <ng-template #LoggedInBlock>
+    <ng-container *ngIf="wishlist.length === 0; then Empty; else Wishlist"></ng-container>
+    <ng-template #Empty>
+      <div class="w-100 d-flex justify-content-center align-items-center flex-column wishlist_no_items">
+        <img src="../../../assets/imgs/illustrations/empty_cart.svg" alt="loading"
+          style="height: 40%; width: auto; max-width: 100%;">
+
+        <p class="my-4">
+          No products added to wishlist.
+        </p>
+      </div>
+    </ng-template>
+    <ng-template #Wishlist>
+      <div class="row">
+        <ng-container *ngFor="let product of wishlist">
+          <div class="col-6 col-md-4">
+            <app-wishlist-card [product]="product"></app-wishlist-card>
+          </div>
+        </ng-container>
+      </div>
+    </ng-template>
+  </ng-template>
+</div>

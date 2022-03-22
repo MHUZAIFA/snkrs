@@ -1,0 +1,71 @@
+.shipping_header {
+  font-size: smaller;
+  font-weight: 400;
+  letter-spacing: 0.03rem;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.shipping_description {
+  letter-spacing: 0.03rem;
+  font-size: x-small;
+  display: block;
+}
+
+.shipping_amount {
+  font-size: small;
+  letter-spacing: 0.03rem;
+  font-weight: 500;
+}
+
+.active {
+  background-color: #000;
+  color: #fff;
+}
+
+.custom_radio {
+  padding: 7px 15px;
+  border-radius: 5px;
+  border: 2px solid #000;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.custom_radio:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.custom_radio:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.mat-radio-button {
+  width: 100%;
+  border: 2px solid #000;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.mat-radio-button ::ng-deep.mat-radio-label-content {
+  font-size: x-small;
+}
+
+.btn_place_order {
+  background-color: #000;
+  width: 100%;
+  height: 50px;
+}
+
+@media (max-width: 500px)  {
+  .shipping_description {
+    display: none;
+  }
+
+  .custom_radio {
+    flex-direction: column;
+  }
+
+}
