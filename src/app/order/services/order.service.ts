@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { AuthService } from 'src/app/auth/services/auth.service';
 import { CartItem } from 'src/app/cart/models/cart-item';
 import { CustomerDetails } from 'src/app/models/Customer-Details';
 import { PRODUCTS } from 'src/app/product/mock/products.mock';
@@ -14,12 +16,19 @@ import { OrderDetailsSummary } from '../models/Order-details-summary';
 })
 export class OrderService {
   private _orderDetailsSummary = new BehaviorSubject(
-    new OrderDetailsSummary('', '', OrderStatusEnum.placed, 0, new CustomerDetails())
+    new OrderDetailsSummary(
+      '',
+      '',
+      OrderStatusEnum.placed,
+      0,
+      new CustomerDetails()
+    )
   );
   private _orderedProducts = new BehaviorSubject([] as Product[]);
   private _cartItems = new BehaviorSubject([] as CartItem[]);
   private _orders = new BehaviorSubject([] as OrderItem[]);
   private _noOrderFound: boolean = false;
+  private _isLoggedIn: boolean = false;
 
   products = PRODUCTS;
 
@@ -55,16 +64,40 @@ export class OrderService {
     return this._orderDetailsSummary.getValue();
   }
 
-  constructor(private _customerService: CustomerService) {
+  get isLoggedin(): boolean {
+    return this._isLoggedIn;
+  }
+
+  constructor(
+    private _customerService: CustomerService,
+    private route: ActivatedRoute,
+    _authService: AuthService
+  ) {
     if (!localStorage.getItem('orders')) {
       localStorage.setItem('orders', JSON.stringify([]));
     }
+
+    _authService.isLoggedIn$.subscribe((loggedIn) => {
+      this._isLoggedIn = loggedIn;
+      if (loggedIn) {
+        this.route.params.subscribe((params) => {
+          this.getOrderDetails(params['id']);
+        });
+      } else {
+        this._cartItems.next([]);
+        this._orderedProducts.next([]);
+        this._orders.next([]);
+        this._noOrderFound = false;
+      }
+    });
+
+    _customerService.customer$.subscribe(_ => this.getOrders());
   }
 
   public getOrders() {
-    const orders = JSON.parse(
-      localStorage.getItem('orders') as string
-    ) as OrderItem[];
+    const orders = this.isLoggedin
+      ? (JSON.parse(localStorage.getItem('orders') as string) as OrderItem[])
+      : [];
     const customerOrders = orders.filter((o) =>
       this._customerService.customer.orders.includes(o.id)
     );
@@ -74,9 +107,9 @@ export class OrderService {
   public getOrderDetails(orderId: string) {
     this._noOrderFound = false;
 
-    const orders = JSON.parse(
-      localStorage.getItem('orders') as string
-    ) as OrderItem[];
+    const orders = this._isLoggedIn
+      ? (JSON.parse(localStorage.getItem('orders') as string) as OrderItem[])
+      : [];
     const order = orders.find((o) => o.id === orderId);
     if (order) {
       const orderedProductIds = order.cartItems.map((i) => i.productId);

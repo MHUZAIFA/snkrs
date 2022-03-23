@@ -1,116 +1,129 @@
-<div class="order_details_summary">
-  <mat-tab-group mat-align-tabs="center">
-    <mat-tab label="Details">
-      <div class="container">
-        <div class="row mt-3">
-          <div class="col-6">
-            <span class="details_header">
-              Tracking Id
-            </span>
-            {{ _orderService.orderDetailsSummary.trackingId }}
+<ng-container *ngIf="!_orderService.isLoggedin; then NotLoggedInBlock; else LoggedInBlock"></ng-container>
+<ng-template #NotLoggedInBlock>
+  <div class="w-100 d-flex justify-content-center align-items-center flex-column wishlist_no_items pt-5 mt-5">
+    <img src="assets/imgs/illustrations/auth.svg" alt="loading"
+      style="height: 40%; width: auto; max-width: 100%;">
+
+    <p class="my-4">
+      Login to view products details.
+    </p>
+  </div>
+</ng-template>
+<ng-template #LoggedInBlock>
+  <div class="order_details_summary">
+    <mat-tab-group mat-align-tabs="center">
+      <mat-tab label="Details">
+        <div class="container">
+          <div class="row mt-3">
+            <div class="col-6">
+              <span class="details_header">
+                Tracking Id
+              </span>
+              {{ _orderService.orderDetailsSummary.trackingId }}
+            </div>
+            <div class="col-6">
+              <span class="details_header">
+                Status
+              </span>
+              <span [class]="'badge ' + _orderService.orderDetailsSummary.status">
+                {{ _orderService.orderDetailsSummary.status | titlecase }}
+              </span>
+            </div>
           </div>
-          <div class="col-6">
-            <span class="details_header">
-              Status
-            </span>
-            <span [class]="'badge ' + _orderService.orderDetailsSummary.status">
-              {{ _orderService.orderDetailsSummary.status | titlecase }}
-            </span>
+          <div class="row mt-3">
+            <div class="col-6">
+              <span class="details_header">
+                No of Items
+              </span>
+              {{ _orderService.orderDetailsSummary.itemsCount }}
+            </div>
+            <div class="col-6">
+              <span class="details_header">
+                Amount Paid
+              </span>
+              &#8377; {{ _orderService.orderDetailsSummary.netTotal }}
+            </div>
           </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-6">
-            <span class="details_header">
-              No of Items
-            </span>
-            {{ _orderService.orderDetailsSummary.itemsCount }}
+          <div class="row mt-3">
+            <div class="col-6">
+              <span class="details_header">
+                Shipping Method
+              </span>
+              {{ _orderService.orderDetailsSummary.customerDetails.shippingMethod | titlecase }}
+            </div>
+            <div class="col-6">
+              <span class="details_header">
+                Payment Mode
+              </span>
+              {{ _orderService.orderDetailsSummary.customerDetails.paymentMode }}
+            </div>
           </div>
-          <div class="col-6">
-            <span class="details_header">
-              Amount Paid
-            </span>
-            &#8377; {{ _orderService.orderDetailsSummary.netTotal }}
+          <div class="row mt-3">
+            <div class="col-6">
+              <span class="details_header">
+                First Name
+              </span>
+              {{ _orderService.orderDetailsSummary.customerDetails.firstName }}
+            </div>
+            <div class="col-6">
+              <span class="details_header">
+                Last Name
+              </span>
+              {{ _orderService.orderDetailsSummary.customerDetails.lastName }}
+            </div>
           </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-6">
-            <span class="details_header">
-              Shipping Method
-            </span>
-            {{ _orderService.orderDetailsSummary.customerDetails.shippingMethod | titlecase }}
+          <div class="row mt-3">
+            <div class="col-12">
+              <span class="details_header">
+                Address
+              </span>
+              {{ _orderService.orderDetailsSummary.customerDetails.address }}
+            </div>
           </div>
-          <div class="col-6">
-            <span class="details_header">
-              Payment Mode
-            </span>
-            {{ _orderService.orderDetailsSummary.customerDetails.paymentMode }}
+          <div class="row mt-3">
+            <div class="col-6">
+              <span class="details_header">
+                City
+              </span>
+              {{ _orderService.orderDetailsSummary.customerDetails.city }}
+            </div>
+            <div class="col-6">
+              <span class="details_header">
+                Country
+              </span>
+              {{ _orderService.orderDetailsSummary.customerDetails.country }}
+            </div>
           </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-6">
-            <span class="details_header">
-              First Name
-            </span>
-            {{ _orderService.orderDetailsSummary.customerDetails.firstName }}
-          </div>
-          <div class="col-6">
-            <span class="details_header">
-              Last Name
-            </span>
-            {{ _orderService.orderDetailsSummary.customerDetails.lastName }}
-          </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-12">
-            <span class="details_header">
-              Address
-            </span>
-            {{ _orderService.orderDetailsSummary.customerDetails.address }}
-          </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-6">
-            <span class="details_header">
-              City
-            </span>
-            {{ _orderService.orderDetailsSummary.customerDetails.city }}
-          </div>
-          <div class="col-6">
-            <span class="details_header">
-              Country
-            </span>
-            {{ _orderService.orderDetailsSummary.customerDetails.country }}
-          </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-6">
-            <span class="details_header">
-              Postal Code
-            </span>
-            {{ _orderService.orderDetailsSummary.customerDetails.postalCode }}
-          </div>
-          <div class="col-6">
-            <span class="details_header">
-              Phone
-            </span>
-            +91 {{ _orderService.orderDetailsSummary.customerDetails.phone }}
-          </div>
-        </div>
-      </div>
-    </mat-tab>
-    <mat-tab label="Products Ordered">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="order_container">
-              <ng-container *ngFor="let cartItem of _orderService.cartItems$ | async; last as last;">
-                <app-ordered-product-card [cartItem]="cartItem" [isLast]="last"></app-ordered-product-card>
-              </ng-container>
+          <div class="row mt-3">
+            <div class="col-6">
+              <span class="details_header">
+                Postal Code
+              </span>
+              {{ _orderService.orderDetailsSummary.customerDetails.postalCode }}
+            </div>
+            <div class="col-6">
+              <span class="details_header">
+                Phone
+              </span>
+              +91 {{ _orderService.orderDetailsSummary.customerDetails.phone }}
             </div>
           </div>
         </div>
-      </div>
-    </mat-tab>
-  </mat-tab-group>
+      </mat-tab>
+      <mat-tab label="Products Ordered">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="order_container">
+                <ng-container *ngFor="let cartItem of _orderService.cartItems$ | async; last as last;">
+                  <app-ordered-product-card [cartItem]="cartItem" [isLast]="last"></app-ordered-product-card>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
 
-</div>
+  </div>
+</ng-template>

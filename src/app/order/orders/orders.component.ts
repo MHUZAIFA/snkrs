@@ -27,6 +27,7 @@ export class OrdersComponent implements OnInit {
   constructor(public _orderService: OrderService) {
     this.dataSource = new MatTableDataSource();
     this._orderService.orders$.subscribe((orders) => {
+      console.log(orders)
       this.dataSource = new MatTableDataSource(orders);
       this.dataSource.paginator = this.paginator as MatPaginator;
       this.dataSource.sort = this.sort as MatSort;

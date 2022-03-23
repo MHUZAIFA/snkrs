@@ -127,7 +127,7 @@ export class CustomerService {
       trackingId,
       this.customer.cartItems,
       netTotal,
-      statuses[this._utilityService.randomInteger(0,3)],
+      statuses[this._utilityService.randomInteger(0,2)],
       new Date().toString(),
       customerDetails
     );
