@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1647990162169,
+  "timestamp": 1648000549864,
   "index": "https://huzaifafcrit.github.io/snkrs/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "https://huzaifafcrit.github.io/snkrs/favicon.ico",
         "https://huzaifafcrit.github.io/snkrs/index.html",
-        "https://huzaifafcrit.github.io/snkrs/main.fe0a55f199037245.js",
+        "https://huzaifafcrit.github.io/snkrs/main.ad3886d62986c9f9.js",
         "https://huzaifafcrit.github.io/snkrs/manifest.webmanifest",
         "https://huzaifafcrit.github.io/snkrs/polyfills.8281ec5b1c34a132.js",
         "https://huzaifafcrit.github.io/snkrs/runtime.27342310a9fcae47.js",
@@ -187,8 +187,8 @@
     "https://huzaifafcrit.github.io/snkrs/assets/imgs/products/Nike Mercurial Superfly 8 Elite/product/Nike Mercurial Superfly 8 Elite img3.webp": "8e0e85f2c09026e6ef634994c5ef1c7dfddd958b",
     "https://huzaifafcrit.github.io/snkrs/assets/imgs/products/Nike Mercurial Superfly 8 Elite/product/Nike Mercurial Superfly 8 Elite img4.webp": "11972e7df93475d09f8fbd08d8b579c3949e4579",
     "https://huzaifafcrit.github.io/snkrs/favicon.ico": "c8ad56c61a40a3e58406a63491fe1273945dd5fe",
-    "https://huzaifafcrit.github.io/snkrs/index.html": "467f5d43a6a92f5c32f01106e9141bbb47bc44aa",
-    "https://huzaifafcrit.github.io/snkrs/main.fe0a55f199037245.js": "1379ca864a14939e5f06818805925d4ee40fa073",
+    "https://huzaifafcrit.github.io/snkrs/index.html": "abbeeb0ea83e4e60b9109c8d14d360bc97b59a38",
+    "https://huzaifafcrit.github.io/snkrs/main.ad3886d62986c9f9.js": "600a1f37ce1b1f2963d99e0242a4949e7dfab86d",
     "https://huzaifafcrit.github.io/snkrs/manifest.webmanifest": "2409b3da6e6f0b5440eb151d3bdf1e288d2fd08d",
     "https://huzaifafcrit.github.io/snkrs/polyfills.8281ec5b1c34a132.js": "0b51029a90c9d4ddc0934c104f8ee26e5569aef9",
     "https://huzaifafcrit.github.io/snkrs/runtime.27342310a9fcae47.js": "aa5ce77e46a7f3c2d874e78b072b722a78f121f9",
