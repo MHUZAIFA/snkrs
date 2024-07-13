@@ -1,27 +1,82 @@
-# Snkrs
+# SNKRS
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
+## Table of Contents
+- [Introduction](#introduction)
+- [Features](#features)
+- [Design](#design)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Build](#build)
+- [Contributors](#contributors)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
 
-## Development server
+## Introduction
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+SNKRS is an online e-commerce web application for browsing and buying sneakers
+A cross platform progressive e-commerce web application for purchasing sneakers. Users can view, search and filter from a wide range of sneakers to find the sneaker of their choice. LoggedIn users can review, wishlist, buy and track their orders. From browsing to checkout this application delivers the best in class user experience.
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The SNKRS application offers the following features:
+
+- **Cross-Platform**: Progressive web application (PWA) accessible across devices.
+- **Browsing and Shopping**: Users can browse a diverse catalog of sneakers.
+- **Search and Filtering**: Enables users to search for specific sneakers and apply filters.
+- **User Authentication**: Secure login and registration functionality.
+- **User Interaction**: Logged-in users can add reviews, wishlist items, purchase sneakers, and track their orders.
+- **Checkout Process**: Smooth and intuitive checkout experience for completing purchases.
+- **Responsive Design**: Ensures usability and functionality across various screen sizes.
+- **Performance**: Optimized for speed and efficiency, providing a seamless user experience.
+- **Accessibility**: Designed to be accessible to users with disabilities.
+- **Security**: Implements best practices to safeguard user data and transactions.
+
+
+## Design
+![Screenshot 1](screenshots/mockup_snkr_store.png)
+*SNKRS  GUI*
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have Node and Yarn installed on your system. If not, download and install it from [nodejs.org](https://nodejs.org/en) [yarnpkg.com](https://classic.yarnpkg.com/en/).
+
+### Installation
+
+First, install the dependencies of SNKRS:
+
+```bash
+yarn install
+```
+
+Second, run the development server using one of the following commands:
+
+```bash
+npm start
+```
 
 ## Build
+To generate the build.
+```bash
+ng build --aot --prod
+```
+## Contributors
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Thank you to the following contributors for their valuable contributions to the project:
 
-## Running unit tests
+- [Huzaifa Anjum](https://github.com/huzaifafcrit)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Contributing
 
-## Running end-to-end tests
+We welcome contributions! If you would like to contribute to SNKRS, please read our [contribution guidelines](CONTRIBUTING.md).
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## License
 
-## Further help
+This project is licensed under the [MIT License](LICENSE). See the [LICENSE](LICENSE) file for details.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Acknowledgements
+
+- A big thanks to the Angular Web development community for making SNKRS possible.
