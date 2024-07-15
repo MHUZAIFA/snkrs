@@ -65,9 +65,7 @@ ng build --aot --prod
 ```
 ## Contributors
 
-Thank you to the following contributors for their valuable contributions to the project:
-
-- [Huzaifa Anjum](https://github.com/huzaifafcrit)
+- [Huzaifa Anjum](https://github.com/mhuzaifa)
 
 ## Contributing
 
