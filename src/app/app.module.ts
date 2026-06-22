@@ -17,6 +17,11 @@ import { ProductModule } from './product/product.module';
 import { WishlistModule } from './wishlist/wishlist.module';
 import { TitleCasePipe } from '@angular/common';
 
+const serviceWorkerScript = (() => {
+  const scriptUrl = new URL('ngsw-worker.js', document.baseURI);
+  return scriptUrl.origin === window.location.origin ? scriptUrl.href : '/ngsw-worker.js';
+})();
+
 @NgModule({
   declarations: [
     AppComponent
@@ -25,7 +30,7 @@ import { TitleCasePipe } from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
+    ServiceWorkerModule.register(serviceWorkerScript, {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
